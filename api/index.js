@@ -6,24 +6,13 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const urlBase = "api";
-
-app.get("/v1", (req, res) => {
+app.get("/", (req, res) => {
   res.send(
     `absolutely nothing to be found here. definitely don't POST anything here.`
   );
 });
 
-app.get("/v1/simple", (req, res) => {
-  const messages = ["it worked", "life is random", "what if I told you"];
-  const message = messages[Math.floor(Math.random() * messages.length)];
-
-  res.json({
-    text: message
-  });
-});
-
-app.post("/v1", async (req, res) => {
+app.post("/", async (req, res) => {
   // @todo
   /*
     const url = `https://libraryofbabel.info/book.cgi`;
@@ -39,11 +28,20 @@ app.post("/v1", async (req, res) => {
     await fetch(url, { method: "POST", body: data });
   */
 
-  res.redirect(`/v1/simple`);
+  res.redirect(`/api/simple`);
 });
 
-app.get("/v1/:name", (req, res) => {
-  let name = req.params.name;
+app.get("/simple", (req, res) => {
+  const messages = ["it worked", "life is random", "what if I told you"];
+  const message = messages[Math.floor(Math.random() * messages.length)];
+
+  res.json({
+    text: message
+  });
+});
+
+app.get(":name", (req, res) => {
+  const name = req.params.name;
 
   res.json({
     message: `Hello ${name}`
