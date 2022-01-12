@@ -8,13 +8,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const urlBase = "api";
 
-app.get("/api", (req, res) => {
+app.get("/v1", (req, res) => {
   res.send(
     `absolutely nothing to be found here. definitely don't POST anything here.`
   );
 });
 
-app.get("/api/simple", (req, res) => {
+app.get("/v1/simple", (req, res) => {
   const messages = ["it worked", "life is random", "what if I told you"];
   const message = messages[Math.floor(Math.random() * messages.length)];
 
@@ -23,7 +23,7 @@ app.get("/api/simple", (req, res) => {
   });
 });
 
-app.post("/api", async (req, res) => {
+app.post("/v1", async (req, res) => {
   // @todo
   /*
     const url = `https://libraryofbabel.info/book.cgi`;
@@ -39,10 +39,10 @@ app.post("/api", async (req, res) => {
     await fetch(url, { method: "POST", body: data });
   */
 
-  res.redirect(`/api/simple`);
+  res.redirect(`/v1/simple`);
 });
 
-app.get("/api/:name", (req, res) => {
+app.get("/v1/:name", (req, res) => {
   let name = req.params.name;
 
   res.json({
