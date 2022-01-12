@@ -6,13 +6,15 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+const urlBase = "api";
+
+app.get("/api", (req, res) => {
   res.send(
     `absolutely nothing to be found here. definitely don't POST anything here.`
   );
 });
 
-app.get("/simple", (req, res) => {
+app.get("/api/simple", (req, res) => {
   const messages = ["it worked", "life is random", "what if I told you"];
   const message = messages[Math.floor(Math.random() * messages.length)];
 
@@ -21,7 +23,7 @@ app.get("/simple", (req, res) => {
   });
 });
 
-app.post("/", async (req, res) => {
+app.post("/api", async (req, res) => {
   // @todo
   /*
     const url = `https://libraryofbabel.info/book.cgi`;
@@ -37,10 +39,10 @@ app.post("/", async (req, res) => {
     await fetch(url, { method: "POST", body: data });
   */
 
-  res.redirect(`/simple`);
+  res.redirect(`/api/simple`);
 });
 
-app.get("/:name", (req, res) => {
+app.get("/api/:name", (req, res) => {
   let name = req.params.name;
 
   res.json({
