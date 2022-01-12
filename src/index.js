@@ -47,7 +47,12 @@ app.get("/:name", (req, res) => {
     message: `Hello ${name}`
   });
 });
-
-app.listen(2020, () => {
-  console.log("server is listening on port 2020");
-});
+/**
+ * 
+ * removing this because i think it's breaking vercel
+    app.listen(2020, () => {
+      console.log("server is listening on port 2020");
+    });
+ * 
+ */
+export default app;
