@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   );
 });
 
-app.post("/v1/", async (req, res) => {
+app.get("/v1/", async (req, res) => {
   // @todo
   /*
     const url = `https://libraryofbabel.info/book.cgi`;
@@ -27,7 +27,10 @@ app.post("/v1/", async (req, res) => {
     };
     await fetch(url, { method: "POST", body: data });
   */
+  res.send(`alright alright alright`);
+});
 
+app.post("/v1/", async (req, res) => {
   res.redirect(`/v1/simple`);
 });
 
@@ -48,4 +51,4 @@ app.get("/v1/:name", (req, res) => {
   });
 });
 
-export default app;
+module.exports = app;
