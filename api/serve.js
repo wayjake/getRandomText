@@ -1,6 +1,6 @@
-const app = require("./index.js");
+const app = require("./index.js")
 
-const port = `2020`;
+const port = `2020`
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+   console.log(`Example app listening at http://localhost:${port}`)
+})
