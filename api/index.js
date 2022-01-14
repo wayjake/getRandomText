@@ -1,7 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
-const fetch = require("node-fetch")
+const axios = require("axios")
 
 const app = express()
 app.use(cors({ origin: true }))
@@ -23,7 +23,7 @@ app.get("/v1/", async (req, res) => {
       index: 1595,
       offset: 11
    }
-   const results = await fetch(url, { method: "POST", body: data })
+   const results = await axios.post(url, data)
 
    res.send(`alright alright alright`)
 })
